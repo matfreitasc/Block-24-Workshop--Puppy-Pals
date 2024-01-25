@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 import { puppyList } from './data/data'
+import puppyCursor from './assets/dog-face-color-icon.svg'
 
 export default function App() {
 	const [puppies, setPuppies] = useState(puppyList)
@@ -29,7 +30,8 @@ export default function App() {
 						onClick={() => {
 							setFeatPupId(puppy.id)
 						}}
-						key={puppy.id}>
+						key={puppy.id}
+						style={{ cursor: 'url(' + puppyCursor + '), auto' }}>
 						{puppy.name}
 					</p>
 				)
