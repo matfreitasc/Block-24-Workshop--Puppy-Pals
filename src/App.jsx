@@ -3,47 +3,37 @@ import { useState, useRef } from 'react'
 import './App.css'
 import { puppyList } from './data/data'
 
-function App() {
+export default function App() {
 	const [puppies, setPuppies] = useState(puppyList)
-
-	const puppyRef = useRef(false)
+	const [featPupId, setFeatPupId] = useState(null)
+	const featuredPup = puppies.find((pup) => pup.id === featPupId)
 
 	return (
-		<>
+		<div className='App'>
 			<h1>Puppy List</h1>
-			<ul className='puppyList'>
-				{puppies.map((puppy) => (
-					<li key={puppy.id} className='card'>
-						<p>Puppy Name: {puppy.name}</p>
-						<div
-							style={
-								puppyRef.current === puppy.id
-									? { display: 'block' }
-									: { display: 'none' }
-							}>
-							<p>Puppy Email: {puppy.email}</p>
-							<p>Puppy Age: {puppy.age}</p>
-							<p>{puppy.tricks <= 1 ? 'Trick' : 'Tricks'}</p>
-							<ul>
-								{puppy.tricks.map((trick) => (
-									<li key={trick.id}>{trick.title}</li>
-								))}
-							</ul>
-						</div>
-						<button
-							onClick={() => {
-								// display the puppy info if the button is clicked and hide the puppy info if the button is clicked again
-								puppyRef.current =
-									puppyRef.current === puppy.id ? false : puppy.id
-								setPuppies([...puppies])
-							}}>
-							{puppyRef.current === puppy.id ? 'Hide info' : 'Show more info'}
-						</button>
-					</li>
-				))}
-			</ul>
-		</>
+			{featPupId && (
+				<div className='featuredPuppy'>
+					<h2>Featured Puppy</h2>
+					<hr />
+					<h3>{featuredPup.name}</h3>
+					<ul>
+						<li>Age: {featuredPup.age}</li>
+						<li>Email: {featuredPup.email}</li>
+					</ul>
+				</div>
+			)}
+			<hr />
+			{puppies.map((puppy) => {
+				return (
+					<p
+						onClick={() => {
+							setFeatPupId(puppy.id)
+						}}
+						key={puppy.id}>
+						{puppy.name}
+					</p>
+				)
+			})}
+		</div>
 	)
 }
-
-export default App

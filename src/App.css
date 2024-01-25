@@ -6,26 +6,21 @@
 
 }
 
-.card{
-  background-color: gray;
-  width: 300px;
-  padding: .5rem;
-  margin: 2px;
-  border-radius: 10px;
-  list-style-type: none;
-}
-.card > div {
-  text-align: left;
-  ul > li{
-    list-style-type: none;
-  }
-}
-
-
-.puppyList{
+.featuredPuppy{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 0;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  hr{
+    width: 100%;
+  }
+  ul > li{
+    list-style: square;
+    text-align: left;
+  }
 }
