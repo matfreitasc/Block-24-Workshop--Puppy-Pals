@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 import { puppyList } from './data/data'
-import puppyCursor from './assets/dog-face-color-icon.svg'
+import puppyCursor from '/dog-face-color-icon.svg'
 
 export default function App() {
 	const [puppies, setPuppies] = useState(puppyList)
